@@ -1,29 +1,37 @@
-<!DOCTYPE html> <!-- זו המילה הראשונה שמציינת שהקובץ הוא מסמך HTML5 -->
-<html lang="he"> <!-- מציין שזו שפה עברית -->
+<!DOCTYPE html>
+<html lang="he">
 <head>
-    <meta charset="UTF-8"> <!-- מגדיר את הקידוד של התוכן כ-UTF-8, כדי להבטיח שהאותיות יופיעו נכון -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- מוודא שהדף יראה טוב במכשירים ניידים -->
-    <title>דף הבית שלי</title> <!-- כותרת הדף שתוצג בכרטיסיית הדפדפן -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שאלות טכניות - Python ו-Machine Learning</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body> <!-- גוף הדף, כל מה שנמצא כאן יופיע בדפדפן -->
-    
-    <header> <!-- כותרת ראשית של הדף -->
-        <h1>ברוכים הבאים לדף הבית שלי</h1> <!-- הכותרת הראשית בדף -->
-    </header>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">שאלות טכניות על Python ו-Machine Learning</h1>
+        <p class="text-center">הכנס שאלה טכנית בנושא Python או Machine Learning, ואנו נענה עליה באמצעות GPT-4!</p>
 
-    <main> <!-- החלק העיקרי של הדף -->
-        <section> <!-- חלק (section) המיועד לתוכן מסוים -->
-            <h2>הטקסט שלך</h2> <!-- כותרת משנה שצמודה לתוכן -->
-            <p>
-                <!-- טקסט שהועתק מקובץ טקסט או שניתן להוסיף כאן טקסט חדש -->
-                זהו מקום שבו תוכל להוסיף את הטקסט שברצונך להציג. לדוגמה, אם יש לך טקסט מתוך קובץ טקסט, פשוט העתק אותו לכאן.
-            </p>
-        </section>
-    </main>
+        <!-- טופס לשליחת שאלה -->
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="question">הכנס שאלה:</label>
+                <input type="text" class="form-control" id="question" name="question" placeholder="הכנס שאלה" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">שלח שאלה</button>
+        </form>
 
-    <footer> <!-- החלק התחתון של הדף, שנראה לרוב בכל הדפים -->
-        <p>האתר נבנה כפרויקט.</p> <!-- טקסט המופיע בתחתית הדף -->
-    </footer>
+        <hr>
 
-</body> <!-- סיום גוף הדף -->
-</html> <!-- סיום המסמך HTML -->
+        <!-- אם יש שאלה ותשובה, מציגים אותם -->
+        {% if question %}
+        <h3>שאלה: {{ question }}</h3>
+        <h4>תשובה:</h4>
+        <p>{{ answer }}</p>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
